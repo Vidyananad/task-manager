@@ -45,6 +45,25 @@ try {
   console.log('Swagger file not yet loaded or missing');
 }
 
-app.get('/', (req, res) => res.send('API is running'));
+// Serve static files from frontend/dist
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// API routes are already handled above. All other routes serve index.html for React Router.
+app.get('*', (req, res) => {
+  if (req.originalUrl.startsWith('/api')) {
+    return res.status(404).send('API endpoint not found');
+  }
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'), (err) => {
+    if (err) {
+      res.status(500).send('Frontend not built or build directory missing');
+    }
+  });
+});
 
 module.exports = app;
+
+// For traditional hosting (Render, etc.)
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+}
