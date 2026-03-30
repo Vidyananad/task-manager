@@ -1,7 +1,8 @@
 {
-  "dependencies": {
-    "axios": "^1.14.0",
-    "jwt-decode": "^4.0.0",
-    "react-router-dom": "^7.13.2"
+  "name": "full-stack-task-manager",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "cd api && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build"
   }
 }
