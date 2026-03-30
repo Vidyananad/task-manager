@@ -2,7 +2,20 @@
   "name": "full-stack-task-manager",
   "version": "1.0.0",
   "scripts": {
-    "install": "cd api && npm install && cd ../frontend && npm install",
     "build": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.1",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^5.0.0",
+    "yamljs": "^0.3.0",
+    "mongodb": "^6.6.2"
   }
 }
