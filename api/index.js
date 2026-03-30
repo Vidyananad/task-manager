@@ -10,10 +10,13 @@ const connectDB = require('./config/db');
 
 dotenv.config();
 
-// Connect to database
-connectDB();
-
 const app = express();
+
+// Connect to database inside a middleware to ensure Serverless cold starts wait
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 // Middleware
 app.use(cors());
